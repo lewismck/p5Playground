@@ -1,14 +1,8 @@
 /**
  * It's a bobbing fish hook of course...
  **/
- var maxCircleSize = 10;
  var speed = 0.04;
  var phase = 0;
- var numRows = 20;
- var numCols = 32;
- var numStrands = 3;
- var slider;
- var button;
  var x = 400;
 
  function setup(){
@@ -23,12 +17,12 @@
 
  function draw(){
    background(60, 130, 240); //4, 58, 74
-   drawCircle();
+   drawHookAndLine();
 
    //Write function to procedurally generate some elements like bubbles or seaweed...
  }
 
- function drawCircle(){
+ function drawHookAndLine(){
 
    //Motion
    phase = frameCount * speed; //frameCount is number of passed frames
