@@ -2,10 +2,9 @@
  * Based off Daniel Shiffman's great coding examples:
  * https://github.com/CodingTrain/Rainbow-Code/blob/master/CodingChallenges
  **/
- var inc = 0.1;
- var scl = 100;
+ var inc = 0.15;
+ var scl = 50;
  var cols, rows;
- var fr;
  var Y_AXIS = 1;
  var X_AXIS = 2;
  var c1;
@@ -19,20 +18,19 @@
 
  function setup(){
   createCanvas(800, 800);
-  //colorMode(HSB, 255);
   cols = floor(width / scl);
   rows = floor(height / scl);
   fr = createP('');
-  c1 = color(random(255),random(255),random(255))//color(204, 102, 0);
+  c1 = color(random(255),random(255),random(255));
   multiply = Math.floor(random(10))%2==0;
-  angleChoice = random(5);
+  angleChoice = random(10);
   flowField = new Array(cols * rows);
 
   //Create an array of particles to be move based on the flowField
   for (var i = 0; i < random(500); i++) {
-    particles[i] = new Particle();
+    particles[i] = new Particle(random(width), random(height), random(3.5));
   }
-  //Set background gradient between a random colour and white
+  //Set background gradient between a random colour and white with a randomly chosen X or Y axis
   setGradient(0, 0, width, height, c1, color(255,255,255), Math.floor(random(10))%2==0 ? X_AXIS : Y_AXIS);
 }
 
@@ -43,6 +41,7 @@
 
 
  function drawEverything(multiply, angleChoice){
+   colorMode(HSB, 100);
    var yoff = 0;
    //Similar to 2D example of drawing in a grid but with vectors not pixels
    for (var x = 0; x < cols; x++){

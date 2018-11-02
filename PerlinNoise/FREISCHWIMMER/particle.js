@@ -1,9 +1,9 @@
-function Particle() {
-  this.pos = createVector(random(width),random(height));
+function Particle(x,y,a) {
+  this.pos = createVector(x,y);
   this.vel = createVector(0,0);
   this.acc = createVector(0,0);
-  this.maxSpeed = 1.2;
-  // this.h = 0;
+  this.maxSpeed = 1.5;
+  this.strokeSize = a;
   this.prevPos = this.pos.copy();
 
     this.update = function() {
@@ -30,11 +30,10 @@ function Particle() {
      */
     this.show = function(){
       stroke(0, 5);
-      strokeWeight(2);
+      strokeWeight(this.strokeSize);
       line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
       this.updatePrev();
       //Lines not points now
-      // point(this.pos.x, this.pos.y);
     }
 
     //Ensure the edges doesn't update the x/y when it's reset
