@@ -11,13 +11,16 @@
  var angles;
  var multiply;
  var angleChoice;
+ var maxParticleSpeed = 1.5;
+ var speedSlide;
+ var c;
 
  var zoff = 0;
 
  var particles = [];
 
  function setup(){
-  createCanvas(800, 800);
+  c = createCanvas(800, 800);
   cols = floor(width / scl);
   rows = floor(height / scl);
   fr = createP('');
@@ -32,10 +35,15 @@
   }
   //Set background gradient between a random colour and white with a randomly chosen X or Y axis
   setGradient(0, 0, width, height, c1, color(255,255,255), Math.floor(random(10))%2==0 ? X_AXIS : Y_AXIS);
+  speedSlide = createSlider(0.5, 3, 1.5, 0.2);
+
+  button = createButton('Save');
+  button.mousePressed(saveImage);
 }
 
 
  function draw(){
+   maxParticleSpeed = speedSlide.value();
    drawEverything(multiply, angleChoice);
  }
 
@@ -78,6 +86,10 @@
  */
 function generateAngle(x, y, z, multiply, m){
   return multiply ? noise(x, y, z) * TWO_PI * m : noise(x, y, z);
+}
+
+function saveImage(){
+  saveCanvas(c, 'Freischwimmer-o-matic', 'jpg');
 }
 
  /*

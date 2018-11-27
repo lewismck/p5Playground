@@ -2,11 +2,12 @@ function Particle(x,y,a) {
   this.pos = createVector(x,y);
   this.vel = createVector(0,0);
   this.acc = createVector(0,0);
-  this.maxSpeed = 1.5;
+  this.maxSpeed = maxParticleSpeed;
   this.strokeSize = a;
   this.prevPos = this.pos.copy();
 
     this.update = function() {
+      this.maxSpeed = maxParticleSpeed;
       this.vel.add(this.acc);
       this.vel.limit(this.maxSpeed);
       this.pos.add(this.vel);
