@@ -20,7 +20,7 @@
  var particles = [];
 
  function setup(){
-  c = createCanvas(800, 800);
+  c = createCanvas(window.innerWidth, 800);
   cols = floor(width / scl);
   rows = floor(height / scl);
   fr = createP('');
