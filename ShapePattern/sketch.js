@@ -3,7 +3,7 @@
  **/
 let maxShapes = 150;
 function setup(){
-  createCanvas(800,800);
+  createCanvas(window.innerWidth,800);
   //Draw a random shape for maxIterations
   for(let i = 0; i < maxShapes; i++){
     drawRandomShape();
@@ -17,10 +17,10 @@ function setup(){
 function drawRandomShape(){
   let x  = floor(random(width));
   let y = floor(random(height));
-  let x1  = floor(random(width));
-  let y1 = floor(random(height));
-  let x2  = floor(random(width));
-  let y2 = floor(random(height));
+  let x1  = floor(random(width/2));
+  let y1 = floor(random(height/2));
+  let x2  = floor(random(width/2));
+  let y2 = floor(random(height/2));
   let shapeHeight = random(height/5);
   let shapeWidth = random(width/5);
   let arcStart = floor(random(180));
@@ -42,7 +42,7 @@ function drawRandomShape(){
       ellipse(x, y, shapeWidth, shapeHeight);
       break;
     case 2:
-    console.log("triangle");
+      console.log("triangle");
       // A triangle
       triangle(x, y, x1, y1, x2, y2);
       break;
