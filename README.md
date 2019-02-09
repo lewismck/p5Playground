@@ -1,2 +1,2 @@
 # p5Playground
-Messing around with Processing
+Messing around with p5.js
