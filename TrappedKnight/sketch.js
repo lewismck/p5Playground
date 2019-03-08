@@ -2,39 +2,46 @@
  * Inspiration
  * https://www.youtube.com/watch?v=RGQe8waGJ4w&t=0s
  **/
-let k, m, ms;
+let k, m, ms, info;
 function setup(){
-  createCanvas(window.innerWidth,1500);
+  createCanvas(window.innerWidth,800);
   //Set up nested array (square spiral chessboard) //Adjust chessboard, staggered diagonal ? regular?
-  ms = 220;
-  k = new Knight([ms/2,(ms/2)-1]);
+  ms = 80;
+  k = new Knight([ms/2,(ms/2)-1], 1, 2);
   console.log(k.currPos);
   m = generateMatrix(ms);
   console.log(m);
   console.log(k);
 
+  info = createP('');
+  background(51);
 }
 
 function draw(){
-  stroke(0);
+
+  let colourA = color(floor(random(255)),floor(random(255)),floor(random(255)));//color(253, 174, 120); these are neat colours
+  let colourB = color(floor(random(255)),floor(random(255)),floor(random(255)));//color(226, 129, 161);
 
   //run and draw knight working through pattern
   while(!k.stuck){
     let startStroke = k.currPos;
+    stroke(lerpColor(colourA, colourB, sin(startStroke[0])*2));
+
     k.move(m, k.currPos);
+
     line(
       startStroke[0]*10,
       startStroke[1]*10,
       k.currPos[0]*10,
       k.currPos[1]*10
     );
-    
+
   }
   noLoop();
-  console.log(
-    'Finished! last move: ' + k.visited[k.visited.length-1] +
-    ' Total Moves: ' + k.visited.length
-  );
+
+  let outcome = 'Finished!<br/> last move: ' + k.visited[k.visited.length-1] +
+  '<br/> Total Moves: ' + k.visited.length;
+  info.html(outcome);
   console.log(k);
 }
 
