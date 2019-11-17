@@ -91,6 +91,8 @@ class Knight{
   isLegalMove(arr, mv){
     //if mv returns undefined not valid
     return typeof arr[mv[0]][mv[1]] !== 'undefined';
+    // return (arr.length-1 >= mv[0]) && (arr[0].length-1 >= mv[1]);
+    // return arr[mv[0]][mv[1]] != undefined;
   }
 
 

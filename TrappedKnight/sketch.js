@@ -37,12 +37,13 @@ function draw(){
     );
 
   }
-  noLoop();
-
+  
   let outcome = 'Finished!<br/> last move: ' + k.visited[k.visited.length-1] +
   '<br/> Total Moves: ' + k.visited.length;
   info.html(outcome);
   console.log(k);
+
+  noLoop();
 }
 
 function generateMatrix(n){
