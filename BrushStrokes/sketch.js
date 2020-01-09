@@ -9,7 +9,7 @@ var noLoopVariable = true;
 var c;
 
 function setup() {
-  var c = createCanvas(window.innerWidth, 800);
+  var c = createCanvas(window.innerWidth, 1800);
   background(200);
   for (var i = 0; i < 70; i++) {
     brushes[i] = createBrush(10);//new Particle(random(width), random(height));
