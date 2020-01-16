@@ -5,20 +5,36 @@
 var boxes = [];
 var saveButton;
 var c;
+var noLoopVariable = false;
+var stoppedText = 'Generate';
+var generatingText = 'Pause';
 
 var fills = [
   [255, 204, 0], //orange/yellow 
   [0, 0, 255], //blue 
   [255, 0, 0], //red
   [255,255,255] //white
-  //[0,0,0] //black
 ];
 
 function setup() {
   let c = createCanvas(window.innerWidth, 800);
+  // background('white');
+  noLoop();
+  
+
+  //add useful buttons
+  saveButton = createButton('Save');
+  saveButton.mousePressed(saveImage);
+
+  //Is this a good idea?? 
+  noLoopButton = createButton(stoppedText);
+  noLoopButton.mousePressed(setNoLoopVariable);
+}
+
+function draw() {
   let x=0;
   let y=0;
-  background('white');
+  
   
   //height
   let sqHeight = random(50, 500);
@@ -43,14 +59,6 @@ function setup() {
     y = y+sqHeight;
     sqHeight = random(50, 500);
   }
-
-  //add useful buttons
-  saveButton = createButton('Save');
-  saveButton.mousePressed(saveImage);
-}
-
-function draw() {
-  
 }
 
 /**
@@ -73,3 +81,10 @@ function saveImage(){
   saveCanvas(c, 'auto-mondrian', 'jpg');
 }
 
+function setNoLoopVariable(){
+  frameRate(0.75);
+  noLoopVariable ? noLoop() : loop();
+  noLoopButton.html(noLoopVariable ? stoppedText : generatingText);
+  noLoopVariable = !noLoopVariable;
+  
+}
